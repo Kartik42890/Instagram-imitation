@@ -23,7 +23,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/addImage"
         android:layout_width="28dp"
         android:layout_height="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/profile_image"
