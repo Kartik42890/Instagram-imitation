@@ -1,9 +1,11 @@
 package com.example.instagramclone
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.text.Html
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.example.instagramclone.Models.User
 import com.example.instagramclone.databinding.ActivitySignUpActivityBinding
 import com.example.instagramclone.utils.USER_NODE
@@ -14,6 +16,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
+
 class signUpActivityActivity : AppCompatActivity() {
     val binding by lazy {
         ActivitySignUpActivityBinding.inflate(layoutInflater)
@@ -21,6 +24,7 @@ class signUpActivityActivity : AppCompatActivity() {
     lateinit var user: User
     private val launcher = registerForActivityResult(ActivityResultContracts.GetContent()){
         uri ->
+//        println(uri)
         uri?.let {
                 uploadImage(uri, USER_PROFILE_FOLDER){
                     imageUrl ->
@@ -37,6 +41,8 @@ class signUpActivityActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        val text = "<font color=#FF000000>Already Have An Account</font> <font color=#1E88E5>login ?</font>"
+        binding.login.setText(Html.fromHtml(text))
         user= User()
         binding.registerButton.setOnClickListener {
             if (binding.name.editText?.text.toString().equals("") or
@@ -56,8 +62,8 @@ class signUpActivityActivity : AppCompatActivity() {
                         Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).set(
                             user)
                             .addOnSuccessListener {
-                                Toast.makeText(this@signUpActivityActivity, "Account Successfully Created", Toast.LENGTH_SHORT)
-                                    .show()
+                                startActivity(Intent(this@signUpActivityActivity,HomeActivity::class.java))
+                                finish()
                             }
                     }else{
                         Toast.makeText(this@signUpActivityActivity, result.exception?.localizedMessage, Toast.LENGTH_SHORT).show()
@@ -67,6 +73,10 @@ class signUpActivityActivity : AppCompatActivity() {
         }
         binding.addImage.setOnClickListener {
             launcher.launch("image/*")
+        }
+        binding.login.setOnClickListener {
+            startActivity(Intent(this@signUpActivityActivity,LoginActivity::class.java))
+            finish()
         }
     }
 }
