@@ -14,7 +14,9 @@ import com.example.instagramclone.utils.uploadImage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.toObject
 import com.google.firebase.ktx.Firebase
+import com.squareup.picasso.Picasso
 
 
 class signUpActivityActivity : AppCompatActivity() {
@@ -44,6 +46,18 @@ class signUpActivityActivity : AppCompatActivity() {
         val text = "<font color=#FF000000>Already Have An Account</font> <font color=#1E88E5>login ?</font>"
         binding.login.setText(Html.fromHtml(text))
         user= User()
+        if(intent.hasExtra("MODE")){
+            if(intent.getIntExtra("MODE",-1)==1){
+                binding.registerButton.text="Update Profile"
+                Firebase.firestore.collection(USER_NODE).document(Firebase.auth.currentUser!!.uid).get()
+                    .addOnSuccessListener {
+                        user = it.toObject<User>()!!
+                        if(!user.image.isNullOrEmpty()){
+                            Picasso.get().load(user.image).into(binding.profileImage)
+                        }
+                    }
+            }
+        }
         binding.registerButton.setOnClickListener {
             if (binding.name.editText?.text.toString().equals("") or
             binding.email.editText?.text.toString().equals("") or
