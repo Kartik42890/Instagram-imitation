@@ -5,4 +5,5 @@
     <color name="login_background">#191919</color>
     <color name="from">#010203</color>
     <color name="blue">#1E88E5</color>
+    <color name="red">#FF0000</color>
 </resources>
