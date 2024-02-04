@@ -30,9 +30,7 @@ class signUpActivityActivity : AppCompatActivity() {
         uri?.let {
                 uploadImage(uri, USER_PROFILE_FOLDER){
                     imageUrl ->
-                    if(imageUrl==null){
-
-                    }else{
+                    if(imageUrl!=null){
                         user.image=imageUrl
                         binding.profileImage.setImageURI(uri)
                     }
