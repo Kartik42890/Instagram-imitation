@@ -6,4 +6,77 @@
     android:layout_height="match_parent"
     tools:context=".Post.ReelsActivity">
 
+    <ImageView
+        android:id="@+id/reel_image"
+        android:layout_width="82dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="112dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/video" />
+
+    <Button
+        android:id="@+id/select_reel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Reels From Gallery"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@+id/reel_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/reel_image"
+        app:layout_constraintTop_toTopOf="@+id/reel_image" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Caption_reel"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:hint="Caption"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reel_image"
+        app:layout_constraintVertical_bias="0.21">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/Linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Caption_reel">
+
+        <Button
+            android:id="@+id/cancel"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:text="Cancel"
+            android:textColor="@android:color/darker_gray"
+            app:strokeColor="@color/red" />
+
+        <Button
+            android:id="@+id/post_reel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:text="Post" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

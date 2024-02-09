@@ -40,10 +40,15 @@ class PostActivity : AppCompatActivity() {
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
         getSupportActionBar()?.setDisplayShowHomeEnabled(true)
         binding.materialToolbar.setNavigationOnClickListener {
+            startActivity(Intent(this@PostActivity,HomeActivity::class.java))
             finish()
         }
         binding.selectImage.setOnClickListener {
             launcher.launch("image/*")
+        }
+        binding.cancelButton.setOnClickListener {
+            startActivity(Intent(this@PostActivity,HomeActivity::class.java))
+            finish()
         }
         binding.postButton.setOnClickListener {
                 val post:Post= Post(imageUrl!!,binding.caption.editableText.toString())
