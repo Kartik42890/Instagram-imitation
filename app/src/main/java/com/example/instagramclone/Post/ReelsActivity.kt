@@ -8,10 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.instagramclone.HomeActivity
 import com.example.instagramclone.Models.Reel
 import com.example.instagramclone.databinding.ActivityReelsBinding
-import com.example.instagramclone.utils.POST_FOLDER
 import com.example.instagramclone.utils.REEL
 import com.example.instagramclone.utils.REEL_FOLDER
-import com.example.instagramclone.utils.uploadImage
 import com.example.instagramclone.utils.uploadVideo
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore

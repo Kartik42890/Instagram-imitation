@@ -21,6 +21,7 @@ fun uploadImage(uri: Uri, folderName:String,callback:(String?)->Unit){
 fun uploadVideo(uri: Uri, folderName:String,progressDialog: ProgressDialog,callback:(String?)->Unit){
     var imageUrl:String?=null
     progressDialog.setTitle("Uploading . . .")
+    progressDialog.show()
     FirebaseStorage.getInstance().getReference(folderName).child(UUID.randomUUID().toString()).putFile(uri)
         .addOnSuccessListener {
             it.storage.downloadUrl.addOnSuccessListener {
