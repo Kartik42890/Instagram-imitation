@@ -11,9 +11,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instagramclone.Models.Post
+import com.example.instagramclone.Models.User
 import com.example.instagramclone.R
 import com.example.instagramclone.databinding.FragmentHomeBinding
+import com.example.instagramclone.fragments.adapters.FollowAdapter
+import com.example.instagramclone.utils.FOLLOW
 import com.example.instagramclone.utils.POST
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.toObject
 import com.google.firebase.ktx.Firebase
@@ -22,6 +26,8 @@ class homeFragment : Fragment() {
 private lateinit var binding: FragmentHomeBinding
 private var postList = ArrayList<Post>()
     private lateinit var adapter: PostAdapter
+    private var followList = ArrayList<User>()
+    private lateinit var followAdapter: FollowAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -35,8 +41,26 @@ private var postList = ArrayList<Post>()
         adapter = PostAdapter(requireContext(),postList)
         binding.postRv.layoutManager = LinearLayoutManager(requireContext())
         binding.postRv.adapter=adapter
+
+        followAdapter = FollowAdapter(requireContext(),followList)
+
+        binding.followRv.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        binding.followRv.adapter = followAdapter
         setHasOptionsMenu(true)
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.materialToolbar2)
+
+        Firebase.firestore.collection(Firebase.auth.currentUser!!.uid + FOLLOW).get().addOnSuccessListener {
+
+            var tempList = ArrayList<User>()
+            followList.clear()
+            for (i in it.documents){
+                var user:User = i.toObject<User>()!!
+                tempList.add(user)
+            }
+            followList.addAll(tempList)
+            followAdapter.notifyDataSetChanged()
+        }
+
 
         Firebase.firestore.collection(POST).get().addOnSuccessListener {
             var tempList = ArrayList<Post>()

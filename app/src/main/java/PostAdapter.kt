@@ -1,5 +1,7 @@
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +29,7 @@ class PostAdapter(var context: Context,var postList: ArrayList<Post>) : Recycler
         return postList.size
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
 
         try {
@@ -43,6 +46,24 @@ class PostAdapter(var context: Context,var postList: ArrayList<Post>) : Recycler
         Glide.with(context).load(postList.get(position).postUrl).placeholder(R.drawable.loading).into(holder.binding.postImage)
         holder.binding.caption.text=postList.get(position).caption
 
+        holder.binding.share.setOnClickListener {
+            shareContent()
+        }
 
+
+                holder.binding.like.setOnClickListener {
+                    holder.binding.like.setImageResource(R.drawable.heart_like)
+                }
+
+    }
+
+    private fun shareContent() {
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, "Check out this awesome content!")
+        }
+
+        context.startActivity(Intent.createChooser(shareIntent, "Share via"))
     }
 }
