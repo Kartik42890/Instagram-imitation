@@ -10,19 +10,19 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="261dp"
-        android:layout_height="158dp"
+        android:layout_width="349dp"
+        android:layout_height="202dp"
         android:layout_marginStart="124dp"
-        android:background="@color/kala"
         android:layout_marginTop="260dp"
         android:layout_marginEnd="124dp"
         android:layout_marginBottom="326dp"
+        android:background="@color/kala"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/icon" />
+        app:srcCompat="@drawable/social_harbour" />
 
     <TextView
         android:id="@+id/textView"

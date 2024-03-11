@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         style="@style/Base.Theme.InstagramClone"
-        app:title="Instagram"
+        app:title="Social Harbour"
         app:titleMarginStart="30dp" />
 
     <androidx.core.widget.NestedScrollView

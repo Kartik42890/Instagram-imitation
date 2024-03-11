@@ -8,15 +8,15 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="93dp"
-        android:layout_height="96dp"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="160dp"
+        android:layout_width="298dp"
+        android:layout_height="185dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="66dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/instagramlofo" />
+        app:srcCompat="@drawable/social_harbour" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email"

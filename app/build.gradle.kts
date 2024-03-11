@@ -5,14 +5,14 @@ plugins {
 }
 
 android {
-    namespace = "com.example.instagramclone"
+    namespace = "com.example.socialharbour"
     compileSdk = 34
     buildFeatures{
         viewBinding = true
     }
 
     defaultConfig {
-        applicationId = "com.example.instagramclone"
+        applicationId = "com.example.socialharbour"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

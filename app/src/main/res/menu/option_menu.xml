@@ -9,7 +9,7 @@
         android:title="like" />
     <item
         android:id="@+id/message"
-        android:icon="@drawable/send"
+        android:icon="@drawable/chat"
         app:showAsAction="always"
         android:title="message" />
 </menu>

@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.instagramclone.Models.Post
-import com.example.instagramclone.Models.User
-import com.example.instagramclone.R
-import com.example.instagramclone.databinding.PostRvBinding
-import com.example.instagramclone.utils.USER_NODE
+import com.example.socialharbour.Models.Post
+import com.example.socialharbour.Models.User
+import com.example.socialharbour.R
+import com.example.socialharbour.databinding.PostRvBinding
+import com.example.socialharbour.utils.USER_NODE
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.toObject
 import com.google.firebase.ktx.Firebase
